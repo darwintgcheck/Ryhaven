@@ -1,22 +1,19 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Müəllif hüquqları (C) 2025, Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
+# YouTube-da abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. © Alexa © Yukki.
 
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
+TheTeamAlexa - müxtəlif məqsədlərlə hazırlanmış Telegram bot layihəsidir.
+Müəllif hüquqları (c) 2021 ~ Hazırkı dövr Ryhaven <https://t.me/ryhaven>
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+Bu proqram pulsuzdur: onu istədiyiniz kimi paylaya və dəyişdirə bilərsiniz.
+Yeni ideyalarınız varsa, əməkdaşlıq da edə bilərsiniz.
 """
-
 
 import sys
-
 from pyrogram import Client
 import config
 from ..logging import LOGGER
 from pyrogram.enums import ChatMemberStatus
-
 
 class AlexaBot(Client):
     def __init__(self):
@@ -29,7 +26,7 @@ class AlexaBot(Client):
             max_concurrent_transmissions=8,
             workers=50,
         )
-        LOGGER(__name__).info(f"Starting Bot...")
+        LOGGER(__name__).info("» Ryhaven musiqi botu ayağa qalxır... Mərhələyə hazır olun!")
 
     async def start(self):
         await super().start()
@@ -39,19 +36,20 @@ class AlexaBot(Client):
         self.mention = get_me.mention
         try:
             await self.send_message(
-                config.LOG_GROUP_ID, "» ᴍᴜsɪᴄ ʙᴏᴛ sᴛᴀʀᴛᴇᴅ, ᴡᴀɪᴛɪɴɢ ғᴏʀ ᴀssɪsᴛᴀɴᴛ..."
+                config.LOG_GROUP_ID,
+                "» Salam! Mən oyandım və artıq ritmləri idarə etməyə hazıram! Köməkçi gəlməsini gözləyirik..."
             )
         except:
             LOGGER(__name__).error(
-                "Bot has failed to access the log Group. Make sure that you have added your bot to your log channel and promoted as admin!"
+                "» Ay ay! Mən log qrupuna girə bilmirəm... Zəhmət olmasa məni ora əlavə et və admin et, yoxsa musiqi səssiz qalacaq!"
             )
             sys.exit()
         a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
         if a.status != ChatMemberStatus.ADMINISTRATOR:
-            LOGGER(__name__).error("Please promote Bot as Admin in Logger Group")
+            LOGGER(__name__).error("» Qrupda admin deyiləm... Mənə taxtımı (admin hüququnu) ver, sənə xidmət edim!")
             sys.exit()
         if get_me.last_name:
             self.name = get_me.first_name + " " + get_me.last_name
         else:
             self.name = get_me.first_name
-        LOGGER(__name__).info(f"MusicBot Started as {self.name}")
+        LOGGER(__name__).info(f"» {self.name} səhnəyə çıxdı! Musiqilər, gəlirəm!")
