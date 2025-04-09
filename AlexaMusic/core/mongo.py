@@ -1,12 +1,12 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Copyright (C) 2025 Ryhaven_Help tərəfindən @ Github, < https://t.me/ryhaven >
+# YouTube kanalımıza abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. © Ryhaven
 
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
+TheTeamAlexa — müxtəlif məqsədli Telegram botları layihəsidir.
+Copyright (c) 2021 ~ Hal-hazıradək Ryhaven <https://t.me/ryhaven>
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+Bu proqram sərbəst proqramdır: istədiyiniz kimi yayımlaya və dəyişdirə bilərsiniz.
+Əgər yeni ideyalarınız varsa, əməkdaşlıq da edə bilərsiniz.
 """
 
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -15,15 +15,15 @@ from config import MONGO_DB_URI
 
 from ..logging import LOGGER
 
-LOGGER(__name__).info("Connecting to your Mongo Database...")
+LOGGER(__name__).info("Mongo Verilənlər Bazası ilə əlaqə qurulur...")
 try:
     _mongo_async_ = AsyncIOMotorClient(MONGO_DB_URI)
     mongodb = _mongo_async_.Alexa
-    LOGGER(__name__).info("Connected to your Mongo Database.")
+    LOGGER(__name__).info("Mongo Verilənlər Bazası ilə uğurla əlaqə quruldu.")
 except:
-    LOGGER(__name__).error("Failed to connect to your Mongo Database.")
+    LOGGER(__name__).error("Mongo Verilənlər Bazası ilə əlaqə qurmaq alınmadı.")
     exit()
 
-## Database For Broadcast Subscription By Team Alexa
+## Team Alexa tərəfindən Yayım Abunəliyi üçün Verilənlər Bazası
 MONGODB_CLI = AsyncIOMotorClient(MONGO_DB_URI)
 db = MONGODB_CLI["subscriptions"]
