@@ -1,8 +1,7 @@
-# Copyright (c) 2024 @KSKOP69. All rights reserved.
-# Use of this source code is governed by a proprietary license.
+# Copyright (c) 2024 @Ryhaven. Bütün hüquqlar qorunur.
+# Bu mənbə kodunun istifadəsi xüsusi bir lisenziya ilə tənzimlənir.
 
-# Made by @KSKOP69 with ❤️
-
+# @Ryhaven tərəfindən sevgi ilə hazırlandı ❤️
 
 import os
 import aiohttp
@@ -19,7 +18,7 @@ async def fetch_content(session: aiohttp.ClientSession, url: str):
             response.raise_for_status()
             return await response.text()
     except aiohttp.ClientError as e:
-        LOGGER(__name__).error(f"Error fetching from {url}: {e}")
+        LOGGER(__name__).error(f"{url} ünvanından məlumat alınarkən xəta baş verdi: {e}")
         return ""
 
 
@@ -30,7 +29,7 @@ async def save_file(content: str, file_path: str):
             await file.write(content)
         return file_path
     except Exception as e:
-        LOGGER(__name__).error(f"Error saving file {file_path}: {e}")
+        LOGGER(__name__).error(f"{file_path} faylı yadda saxlanılarkən xəta baş verdi: {e}")
         return ""
 
 
@@ -47,8 +46,8 @@ async def save_cookies():
             saved_path = await save_file(content, file_path)
 
             if saved_path and os.path.getsize(saved_path) > 0:
-                LOGGER(__name__).info(f"Cookies saved successfully to {saved_path}.")
+                LOGGER(__name__).info(f"Cookies uğurla {saved_path} faylına qeyd edildi.")
             else:
-                LOGGER(__name__).error("Failed to save cookies or the file is empty.")
+                LOGGER(__name__).error("Cookies yadda saxlanıla bilmədi və ya fayl boşdur.")
         else:
-            LOGGER(__name__).error("Failed to fetch cookies.")
+            LOGGER(__name__).error("Cookies məlumatlarını əldə etmək mümkün olmadı.")
