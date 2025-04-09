@@ -1,12 +1,12 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Müəlliflik Hüququ (C) 2025 Ryhaven_Help @ Github, < https://t.me/ryhaven >
+# YT kanalına abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. © Ryhaven © Yukki.
 
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
+TheTeamRyhaven, Telegram botlarından ibarət müxtəlif məqsədlər üçün bir layihədir.
+Müəlliflik hüququ (c) 2021 ~ Hal-hazırda Team Ryhaven <Ryhaven>
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+Bu proqram pulsuz proqramdır: istədiyiniz kimi yenidən paylaya və ya dəyişdirə bilərsiniz
+və ya yeni ideyalarınız varsa, əməkdaşlıq edə bilərsiniz.
 """
 
 import re
@@ -14,7 +14,7 @@ from os import path
 
 from yt_dlp import YoutubeDL
 
-from AlexaMusic.utils.formatters import seconds_to_min
+from RyhavenMusic.utils.formatters import seconds_to_min
 
 
 class SoundAPI:
