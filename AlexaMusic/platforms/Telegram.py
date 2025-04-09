@@ -1,12 +1,12 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Copyright (C) 2025 by Ryhaven_Help @ Github, < https://t.me/ryhaven >
+# YouTube kanalına abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. © Ryhaven © Yukki.
 
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
+TheTeamRyhaven — müxtəlif məqsədlər üçün Telegram bot layihəsidir.
+Copyright (c) 2021 ~ İndiyə qədər Team Ryhaven <https://t.me/ryhaven>
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+Bu proqram pulsuzdur: istədiyiniz kimi yaymaq və dəyişdirmək hüququnuz var.
+Yeni ideyalarınız varsa, əməkdaşlıq da edə bilərsiniz.
 """
 
 import asyncio
@@ -20,7 +20,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Voice
 
 import config
 from config import lyrical
-from AlexaMusic import app
+from RyhavenMusic import app
 
 from ..utils.formatters import convert_bytes, get_readable_time, seconds_to_min
 
@@ -54,9 +54,9 @@ class TeleAPI:
         try:
             file_name = file.file_name
             if file_name is None:
-                file_name = "Telagram audio file" if audio else "Telagram video file"
+                file_name = "Telegram audio file" if audio else "Telegram video file"
         except:
-            file_name = "Telagram audio file" if audio else "Telagram video file"
+            file_name = "Telegram audio file" if audio else "Telegram video file"
         return file_name
 
     async def get_duration(self, file):
@@ -141,7 +141,7 @@ class TeleAPI:
                     [
                         [
                             InlineKeyboardButton(
-                                text="🚦 Cancel downloading",
+                                text="🚦 Yükləməni dayandır",
                                 callback_data="stop_downloading",
                             ),
                         ]
@@ -160,14 +160,15 @@ class TeleAPI:
                     completed_size = convert_bytes(current)
                     speed = convert_bytes(speed)
                     text = f"""
-**{app.mention} Telagram Media Downloader**
+**{app.mention} Yükləmə Mühəndisi**
 
-**Total file size:** {total_size}
-**Completed:** {completed_size} 
-**Percentage:** {percentage[:5]}%
+**Ümumi fayl ölçüsü:** {total_size}
+**Tamamlanan:** {completed_size} 
+**Faiz:** {percentage[:5]}%
 
-**Speed:** {speed}/s
-**Elapsed Time:** {eta}"""
+**Sürət:** {speed}/s
+**Keçən Vaxt:** {eta}**
+Yükləmə biraz zaman alacaq, amma narahat olma, hər şey yolunda! 🚀"""
                     try:
                         await mystic.edit_text(text, reply_markup=upl)
                     except:
@@ -186,7 +187,7 @@ class TeleAPI:
                     progress=progress,
                 )
                 await mystic.edit_text(
-                    "Sucessfully Downloaded\n Processing File Now..."
+                    "Yükləmə Uğurla Tamamlandı! 🎉\n İndi faylınızı işləyirik, biraz gözləyin..."
                 )
                 downloader.pop(message.id, None)
             except:
