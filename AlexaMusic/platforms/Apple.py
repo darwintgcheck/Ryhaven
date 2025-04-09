@@ -1,14 +1,13 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Copyright (C) 2025 by Ryhaven_Help @ Github, < https://t.me/ryhaven >
+# YouTube kanalına abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. © Ryhaven © Yukki.
 
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
+TheTeamRyhaven — müxtəlif məqsədlər üçün Telegram bot layihəsidir.
+Copyright (c) 2021 ~ İndiyə qədər Team Ryhaven <https://t.me/ryhaven>
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+Bu proqram pulsuzdur: istədiyiniz kimi yaymaq və dəyişdirmək hüququnuz var.
+Yeni ideyalarınız varsa, əməkdaşlıq da edə bilərsiniz.
 """
-
 
 import re
 from typing import Union
@@ -38,46 +37,47 @@ class AppleAPI:
                     return False
                 html = await response.text()
         soup = BeautifulSoup(html, "html.parser")
-        search = None
+        axtaris = None
         for tag in soup.find_all("meta"):
             if tag.get("property", None) == "og:title":
-                search = tag.get("content", None)
-        if search is None:
+                axtaris = tag.get("content", None)
+        if axtaris is None:
             return False
-        results = VideosSearch(search, limit=1)
-        for result in (await results.next())["result"]:
-            title = result["title"]
-            ytlink = result["link"]
-            vidid = result["id"]
-            duration_min = result["duration"]
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-        track_details = {
-            "title": title,
+        nəticələr = VideosSearch(axtaris, limit=1)
+        for nəticə in (await nəticələr.next())["result"]:
+            başlıq = nəticə["title"]
+            ytlink = nəticə["link"]
+            vidid = nəticə["id"]
+            müddət = nəticə["duration"]
+            şəkil = nəticə["thumbnails"][0]["url"].split("?")[0]
+        mahnı_məlumatı = {
+            "title": başlıq,
             "link": ytlink,
             "vidid": vidid,
-            "duration_min": duration_min,
-            "thumb": thumbnail,
+            "duration_min": müddət,
+            "thumb": şəkil,
         }
-        return track_details, vidid
+        return mahnı_məlumatı, vidid
 
     async def playlist(self, url, playid: Union[bool, str] = None):
         if playid:
             url = self.base + url
-        playlist_id = url.split("playlist/")[1]
+        siyahı_id = url.split("playlist/")[1]
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
                 if response.status != 200:
                     return False
                 html = await response.text()
         soup = BeautifulSoup(html, "html.parser")
-        applelinks = soup.find_all("meta", attrs={"property": "music:song"})
-        results = []
-        for item in applelinks:
+        apple_linkləri = soup.find_all("meta", attrs={"property": "music:song"})
+        nəticələr = []
+        for item in apple_linkləri:
             try:
                 xx = (((item["content"]).split("album/")[1]).split("/")[0]).replace(
                     "-", " "
                 )
             except:
                 xx = ((item["content"]).split("album/")[1]).split("/")[0]
-            results.append(xx)
-        return results, playlist_id
+            nəticələr.append(xx)
+        return nəticələr, siyahı_id
+
