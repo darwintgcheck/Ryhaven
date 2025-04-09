@@ -1,19 +1,15 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Copyright (C) 2025 Ryhaven_Help tərəfindən @ Github, < https://t.me/ryhaven >
+# YouTube kanalımıza abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. © Ryhaven
 
+"""Ryhaven — müxtəlif məqsədlərlə yaradılmış Telegram botları layihəsidir.
+Copyright (c) 2021 ~ Bu günə qədər Ryhaven <https://t.me/ryhaven>
+
+Bu proqram sərbəstdir: istədiyiniz kimi dəyişdirə və yayımlaya bilərsiniz,
+və ya yeni ideyanız varsa, birgə işləyə bilərsiniz.
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
-
 
 import os
-
 from ..logging import LOGGER
-
 
 def dirr():
     for file in os.listdir():
@@ -29,4 +25,5 @@ def dirr():
     if "cache" not in os.listdir():
         os.mkdir("cache")
 
-    LOGGER(__name__).info("Directories Updated.")
+    LOGGER(__name__).info("Qovluqlar yeniləndi.")
+
