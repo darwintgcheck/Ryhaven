@@ -1,14 +1,13 @@
-# Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+# Copyright (C) 2025 Ryhaven_Help tərəfindən @ Github, < https://t.me/ryhaven >
+# YouTube kanalımıza abunə olun < Jankari Ki Duniya >. Bütün hüquqlar qorunur. ©Ryhaven
 
 """
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2021 ~ Present Team Alexa <https://github.com/TheTeamAlexa>
+TheTeamAlexa — müxtəlif məqsədlərə xidmət edən Telegram botları layihəsidir.
+Copyright (c) 2021 ~ Hazırki dövr Ryhaven <https://t.me/ryhaven>
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+Bu proqram sərbəst proqram təminatıdır: istədiyiniz kimi yayımlaya və dəyişdirə bilərsiniz,
+və ya yeni ideyalarınız varsa, birlikdə işləyə bilərsiniz.
 """
-
 
 import asyncio
 import shlex
@@ -51,9 +50,9 @@ def git():
         UPSTREAM_REPO = config.UPSTREAM_REPO
     try:
         repo = Repo()
-        LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
+        LOGGER(__name__).info(f"Git Klienti Tapıldı [VPS ÜZRƏ QURAŞDIRICI]")
     except GitCommandError:
-        LOGGER(__name__).info(f"Invalid Git Command")
+        LOGGER(__name__).info(f"Yanlış Git Əmri")
     except InvalidGitRepositoryError:
         repo = Repo.init()
         if "origin" in repo.remotes:
@@ -80,4 +79,4 @@ def git():
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -r requirements.txt")
-        LOGGER(__name__).info(f"Fetched Updates from: {REPO_LINK}")
+        LOGGER(__name__).info(f"Yeniləmələr uğurla alındı: {REPO_LINK}")
